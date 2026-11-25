@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="HAMCORE — Florida amateur radio repeater directory and interactive map.">
+  <title>HAMCORE | Florida Repeater Network</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">H</span><span>HAM<span class="accent">CORE</span><small>FLORIDA RADIO DIRECTORY</small></span></a>
+  <nav><a class="active" href="#map-section">Map</a><a href="#directory">Directory</a><a href="#about">About</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow"><span class="pulse"></span> FLORIDA AMATEUR RADIO</div>
+    <h1>Connect across<br><span class="gradient">the Sunshine State.</span></h1>
+    <p class="hero-copy">A searchable directory and interactive map for Florida amateur radio repeaters. Explore by county, mode, or callsign.</p>
+    <div class="hero-actions"><a class="button primary" href="#map-section">Explore the map <span>↗</span></a><a class="button secondary" href="#directory">Browse directory</a></div>
+    <div class="stats"><div><strong id="stat-total">0</strong><span>REPEATERS LOADED</span></div><div><strong id="stat-counties">0</strong><span>COUNTIES</span></div><div><strong id="stat-modes">0</strong><span>MODES</span></div></div>
+  </section>
+  <section id="map-section" class="section">
+    <div class="section-heading"><div><div class="eyebrow">EXPLORE</div><h2>Repeater map</h2></div><span class="section-note">Select a marker for repeater details</span></div>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search callsign, city, frequency…" aria-label="Search repeaters">
+      <select id="county"><option value="">All counties</option></select>
+      <select id="mode"><option value="">All modes</option></select>
+      <label class="upload button secondary">Import CSV<input id="csv-file" type="file" accept=".csv,text/csv"></label>
+    </div>
+    <div id="map" role="application" aria-label="Interactive Florida repeater map"></div>
+    <p class="map-caption">Map data © OpenStreetMap contributors; map tiles © Esri. Repeater data is supplied by the site owner and should be independently verified before use.</p>
+  </section>
+  <section id="directory" class="section">
+    <div class="section-heading"><div><div class="eyebrow">FLORIDA DIRECTORY</div><h2>Repeater listings</h2></div><button id="export" class="button secondary">Export CSV ↓</button></div>
+    <div class="table-wrap"><table><thead><tr><th>CALLSIGN / NAME</th><th>LOCATION</th><th>COUNTY</th><th>OUTPUT</th><th>MODE</th><th>DETAILS</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="empty">No repeater records loaded yet. Import a CSV exported from your HAMCORE app.</td></tr></tbody></table></div>
+    <div class="table-footer"><span id="result-count">0 listings</span><span>Only records with coordinates appear on the map.</span></div>
+  </section>
+  <section id="about" class="about section">
+    <div><div class="eyebrow">ABOUT HAMCORE</div><h2>Built for the<br>radio community.</h2></div>
+    <p>HAMCORE is a community-focused project for browsing Florida amateur radio repeater information. This public website is a read-only directory: it does not expose your private logbook, radio settings, or local database.</p>
+  </section>
+</main>
+<footer><span>HAM<span class="accent">CORE</span> <span class="muted">| Florida Repeater Directory</span></span><span class="muted">Verify frequencies, tones, and operating status with a current trusted source.</span></footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="app.js"></script>
+</body>
+</html>
